@@ -1,8 +1,8 @@
 {
-  "name": "com.halbardhobby.simulvideo",
-  "displayName": "SimulVideo",
-  "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "name": "com.halbardhobby.privateer",
+  "displayName": "privateer",
+  "version": "0.0.1",
+  "description": "🏴‍☠️ Multiplatform app to have private video conversations.",
   "main": "./public/electron.js",
   "homepage": ".",
   "dependencies": {
