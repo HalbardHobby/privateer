@@ -1,5 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { Plugins } from '@capacitor/core'
+import { CameraPreviewOptions, CameraPreviewPictureOptions } from '@capacitor-community/camera-preview'
+// Needed for web registration
+import '@capacitor-community/camera-preview'
+
+const { CameraPreview } = Plugins;
+
+
+const openCamera = () => {
+  let cameraPreviewOptions = {
+    position: 'rear',
+    parent: 'cameraPreview',
+    className: 'cameraPreview'
+  }
+  CameraPreview.start(cameraPreviewOptions);
+}
 
 function App() {
   return (
@@ -17,6 +33,10 @@ function App() {
         >
           Learn React
         </a>
+        <div id="cameraPreview" className="cameraPreview">
+
+        </div>
+        <button onClick={openCamera}>Start Camera</button>
       </header>
     </div>
   );
