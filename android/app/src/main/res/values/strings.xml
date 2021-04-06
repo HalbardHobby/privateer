@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Privateer</string>
+    <string name="title_activity_main">Privateer</string>
+    <string name="package_name">com.halbardhobby.privateer</string>
+    <string name="custom_url_scheme">com.halbardhobby.privateer</string>
+</resources>

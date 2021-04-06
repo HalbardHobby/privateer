@@ -1,0 +1,13 @@
+{
+  "appId": "com.halbardhobby.privateer",
+  "appName": "Privateer",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
