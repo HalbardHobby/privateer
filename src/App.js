@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import { useRef, useState } from 'react';
 import { Plugins } from '@capacitor/core'
-import { CameraPreviewOptions, CameraPreviewPictureOptions } from '@capacitor-community/camera-preview'
 // Needed for web registration
 import '@capacitor-community/camera-preview'
 
-const { CameraPreview } = Plugins;
 
-
-const openCamera = () => {
-  let cameraPreviewOptions = {
-    position: 'rear',
-    parent: 'cameraPreview',
-    className: 'cameraPreview'
-  }
-  CameraPreview.start(cameraPreviewOptions);
-}
 
 function App() {
+
+  const [video, setVideo] = useState({ playing: false, source: null });
+  const videoRef = useRef(null);
+
+
+	const startVideo = async () => {
+		navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+    .then( stream => {
+      setVideo( { playing: true, source: stream } );
+      videoRef.current.srcObject = stream;
+    } )
+    .catch( err => null )
+	};
+
+  const stopVideo = async () => {
+    let stream = video.source;
+    setVideo( { playing: false, source: null } );
+    stream.getTracks().forEach( track => track.stop() );
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,10 +43,16 @@ function App() {
         >
           Learn React
         </a>
-        <div id="cameraPreview" className="cameraPreview">
-
-        </div>
-        <button onClick={openCamera}>Start Camera</button>
+        <div>
+				<video ref={videoRef} autoPlay muted></video>
+			</div>
+			<div>
+				{ video.playing ? (
+					<button onClick={stopVideo}>Stop</button>
+				) : (
+					<button onClick={startVideo}>Start</button>
+				)}
+			</div>
       </header>
     </div>
   );
