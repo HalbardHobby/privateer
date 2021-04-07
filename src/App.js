@@ -1,33 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { useRef, useState } from 'react';
-import { Plugins } from '@capacitor/core'
+import LocalStream from './components/LocalStream'
 // Needed for web registration
 import '@capacitor-community/camera-preview'
 
 
 
 function App() {
-
-  const [video, setVideo] = useState({ playing: false, source: null });
-  const videoRef = useRef(null);
-
-
-	const startVideo = async () => {
-		navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-    .then( stream => {
-      setVideo( { playing: true, source: stream } );
-      videoRef.current.srcObject = stream;
-    } )
-    .catch( err => null )
-	};
-
-  const stopVideo = async () => {
-    let stream = video.source;
-    setVideo( { playing: false, source: null } );
-    stream.getTracks().forEach( track => track.stop() );
-  }
-
   return (
     <div className="App">
       <header className="App-header">
@@ -43,16 +23,7 @@ function App() {
         >
           Learn React
         </a>
-        <div>
-				<video ref={videoRef} autoPlay muted></video>
-			</div>
-			<div>
-				{ video.playing ? (
-					<button onClick={stopVideo}>Stop</button>
-				) : (
-					<button onClick={startVideo}>Start</button>
-				)}
-			</div>
+        <LocalStream/>
       </header>
     </div>
   );

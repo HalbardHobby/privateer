@@ -24,10 +24,10 @@ const LocalStream = () => {
     <div className="LocalStream">
 				<video ref={videoRef} autoPlay muted></video>
 			<div>
-				{ video.playing ? (
+				{ stream.playing ? (
 					<button onClick={stopVideo}>Stop</button>
 				) : (
-					<button onClick={startVideo}>Start</button>
+					<button onClick={startStream}>Start</button>
 				)}
 			</div>
     </div>
