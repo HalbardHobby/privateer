@@ -1,14 +1,11 @@
 import './App.css';
-import LocalStream from './components/LocalStream';
-import RemoteStream from './components/RemoteStream';
-import connection from './components/ConnectionManager';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LocalStream/>
-        <RemoteStream peerConnection={connection}/>
+        
       </header>
     </div>
   );
